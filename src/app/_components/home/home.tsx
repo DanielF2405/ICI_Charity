@@ -13,23 +13,23 @@ import { Stats } from "./stats";
 
 export const Home: React.FC = () => {
   return (
-    <div className="charity-landing-page">
-      <div className="div">
-        <Footer />
-        <div className="overlap-4">
-          <FAQ />
-          <Pricing />
-          <Review />
-          <Stats />
-          <Impact />
-        </div>
-        <div className="overlap-22">
+    // <div className="charity-landing-page">
+      <>
+        {/* <div className="overlap-22">
           <Header />
           <Hero />
-        </div>
+        </div> */}
         <AboutUs />
         <Partners />  
-      </div>
-    </div>
+        <div className="overlap-4">
+          <Impact />
+          <Stats />
+          <Review />
+          <Pricing />
+          <FAQ />
+        </div>
+        {/* <Footer /> */}
+      </>
+    // </div>
   );
 };

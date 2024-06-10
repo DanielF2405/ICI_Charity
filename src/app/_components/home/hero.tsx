@@ -19,6 +19,8 @@ export const Hero: React.FC = () => {
                 </button>
             </div>
             <div className="ellipse-8" />
+            <div className="rectangle-7" />
+            <div className="rectangle-8" />
         </>
     );
 };

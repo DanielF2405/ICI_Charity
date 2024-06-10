@@ -5,6 +5,7 @@ import FacebookIcon from "../../assets/facebook.png";
 import TwitterIcon from "../../assets/twitter.png";
 import InstagramIcon from "../../assets/instagram.png";
 import LinkedInIcon from "../../assets/linkedin.png";
+import "~/styles/styles.css";
 
 export const Footer: React.FC = () => {
     return (

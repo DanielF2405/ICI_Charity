@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Header: React.FC = () => {
+export function Header({ children}: {children: React.ReactNode}){
     return (
         <>
-            <div className="mask-group-2">
+            {/* <div className="mask-group-2">
                 <div className="overlap-23">
                     <div className="rectangle-6" />
                     <div className="ellipse-6" />
@@ -18,9 +18,7 @@ export const Header: React.FC = () => {
                         src="mask-group-2.png"
                     />
                 </div>
-            </div>
-            <div className="rectangle-7" />
-            <div className="rectangle-8" />
+            </div> */}
             <div className="navigation-menu">
                 <div className="frame-2">
                     <div className="text-wrapper-23">Login</div>
@@ -40,6 +38,7 @@ export const Header: React.FC = () => {
                 </div>
             </div>
             <div className="ellipse-7" />
+            {children}
         </>
     );
 };
