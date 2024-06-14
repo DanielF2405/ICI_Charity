@@ -1,25 +1,20 @@
+import Link from "next/link";
 import React from "react";
+import "~/styles/header.css";
 
-export function Header({ children}: {children: React.ReactNode}){
+export function Header({ children }: { children: React.ReactNode }) {
+    const links = [
+        { name: "Home", url: "/" },
+        { name: "Donate", url: "/donate" },
+        { name: "About Us", url: "/about" },
+        { name: "Contact", url: "/contact" },
+        { name: "Partners", url: "/partners" },
+        { name: "Feedback", url: "/feedback" },
+    ];
     return (
-        <>
-            {/* <div className="mask-group-2">
-                <div className="overlap-23">
-                    <div className="rectangle-6" />
-                    <div className="ellipse-6" />
-                    <img
-                        className="mask-group-2"
-                        alt="Mask group"
-                        src="mask-group.png"
-                    />
-                    <img
-                        className="mask-group-2"
-                        alt="Mask group"
-                        src="mask-group-2.png"
-                    />
-                </div>
-            </div> */}
-            <div className="navigation-menu">
+        <div className="header">
+            {/* <nav className="navigation-menu">
+            <div className="ellipse-7" />
                 <div className="frame-2">
                     <div className="text-wrapper-23">Login</div>
                 </div>
@@ -27,18 +22,32 @@ export function Header({ children}: {children: React.ReactNode}){
                     <div className="text-wrapper-24">Signup</div>
                 </div>
                 <div className="navbar">
-                    <div className="text-wrapper-25">Feedback</div>
-                    <div className="text-wrapper-26">Partners</div>
-                    <div className="text-wrapper-27">Contact</div>
-                    <div className="text-wrapper-28">About Us</div>
-                    <div className="text-wrapper-29">Donate</div>
-                    <div className="group-40">
-                        <div className="text-wrapper-30">Home</div>
-                    </div>
+                    {links.map((link) => (
+                        <div key={link.url} className="text-wrapper-25">{link.name}</div>
+                    ))}
                 </div>
-            </div>
-            <div className="ellipse-7" />
+            </nav> */}
+            <nav className="navigation-menu">
+                <div className="ellipse-7" />
+                <div className="navbar">
+                    {links.map((link) => (
+                        <div key={link.url} className="nav-link">
+                            <Link href={link.url}>
+                                {link.name}
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+                <div className="auth-buttons">
+                <div className="frame login-frame">
+                    <div className="text-wrapper">Login</div>
+                </div>
+                <div className="frame signup-frame">
+                    <div className="text-wrapper">Signup</div>
+                </div>
+                </div>
+            </nav>
             {children}
-        </>
+        </div>
     );
-};
+}

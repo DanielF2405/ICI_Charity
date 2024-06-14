@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
@@ -15,26 +13,37 @@ import { Stats } from "./_components/home/stats";
 import { AboutUs } from "./_components/home/about";
 import { Partners } from "./_components/home/partners";
 import { Header } from "./_components/header";
-import { Hero } from "./_components/home/hero";
-import { Frame } from "./_components/donate/donate";
-
+import { Hero as HomeHero } from "./_components/home/hero";
+import { Frame } from "../pages/donate";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import  Layout  from "./pageLayout";
+import "~/styles/styleguide.css";
+// const Layout = ({
+//     hero,
+//     children,
+// }: {
+//     hero: React.ReactNode;
+//     children: React.ReactNode;
+// }) => {
+//     return (
+//         <div className="charity-landing-page">
+//             <div className="main-content">
+//                 <Header>{hero}</Header>
+//                 <div className="content">{children}</div>
+//                 <Footer />
+//             </div>
+//         </div>
+//     );
+// };
 export default async function Home() {
     const hello = await api.post.hello({ text: "from tRPC" });
     const session = await getServerAuthSession();
 
     return (
         // <CharityLandingPage />
-        <div className="charity-landing-page">
-            <div className="div">
-                <div>
-                    <Header>
-                        <Hero />
-                    </Header>
-                </div>
-                {/* <HomePage /> */}
-                <Frame />
-                <Footer />
-            </div>
-        </div>
+        <Layout hero={<HomeHero />}>
+            <HomePage />
+        </Layout>
     );
 }
+

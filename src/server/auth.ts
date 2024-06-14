@@ -66,8 +66,6 @@ declare module "next-auth" {
 // };
 
 
-console.log("GOOGLE_CLIENT_ID", env.GOOGLE_CLIENT_ID)
-console.log("GOOGLE_CLIENT_SECRET", env.GOOGLE_CLIENT_SECRET)
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => ({

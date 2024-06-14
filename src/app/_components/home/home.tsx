@@ -1,3 +1,4 @@
+"use client";
 // components/CharityLandingPage.tsx
 import React from "react";
 import { Footer } from "../footer";
@@ -10,6 +11,8 @@ import { AboutUs } from "./about";
 import { Hero } from "./hero";
 import { Partners } from "./partners";
 import { Stats } from "./stats";
+// import "~/styles/styles.css";
+import "~/styles/home.css";
 
 export const Home: React.FC = () => {
   return (
@@ -24,8 +27,8 @@ export const Home: React.FC = () => {
         <div className="overlap-4">
           <Impact />
           <Stats />
-          <Review />
           <Pricing />
+          <Review />
           <FAQ />
         </div>
         {/* <Footer /> */}

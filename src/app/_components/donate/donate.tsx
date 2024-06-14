@@ -5,15 +5,18 @@ import React from "react";
 // import { Twitter } from "./Twitter";
 // import { Youtube } from "./Youtube";
 import "../../../styles/donate.css";
+import Layout from "~/app/pageLayout";
+import { Hero } from "~/app/_components/donate/hero";
+import { Info } from "./info";
 
 export const Frame = (): JSX.Element => {
   return (
     <div className="frame">
-      <div className="div">
+      <div >
         <div className="overlap-4">
           <div className="overlap-5">
             <div className="overlap-6">
-              
+              <Info />
               <div className="div-2">
                 <div className="text-wrapper-16">Choose a donation amount</div>
                 <div className="div-3">
@@ -42,20 +45,6 @@ export const Frame = (): JSX.Element => {
               </div>
               <p className="text-wrapper-19">Welcome to _, Please fill out the form below.</p>
             </div>
-            <div className="group-7">
-              <div className="frame-wrapper">
-                <div className="frame-wrapper-2">
-                  <div className="div-5">
-                    <div className="text-wrapper-20">Get Involved Today</div>
-                    <p className="text-wrapper-21">
-                      Your donation helps us provide essential services and support to those in need. Together, we can
-                      make a difference.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rectangle-5" />
           </div>
           <div className="div-6">
             <div className="text-wrapper-16">Choose a donation frequency</div>
@@ -101,3 +90,14 @@ export const Frame = (): JSX.Element => {
     </div>
   );
 };
+
+
+const WrappedFrame = (): JSX.Element => {
+    return (
+        <Layout hero={Hero}>
+            <Frame />
+        </Layout>
+    )
+}
+
+export default WrappedFrame;
