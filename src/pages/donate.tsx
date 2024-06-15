@@ -6,16 +6,17 @@ import React from "react";
 // import { Youtube } from "./Youtube";
 import "../styles/donate.css";
 import Layout from "~/app/pageLayout";
-import { Hero } from "~/app/_components/donate/hero";
-import { Frame } from "~/app/_components/donate/donate";
+import { DonateHero } from "~/app/_components/donate/hero";
+import { Donate } from "~/app/_components/donate/donate";
 
 
 const WrappedFrame = (): JSX.Element => {
     return (
-        <Layout hero={Hero}>
-            <Frame />
+        <Layout hero={<DonateHero />}>
+            <Donate />
         </Layout>
-    )
-}
+    );
+};
+
 
 export default WrappedFrame;

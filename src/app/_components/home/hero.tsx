@@ -30,7 +30,7 @@ import "~/styles/hero.css";
 
 export const Hero: React.FC = () => {
     return (
-        <div className="hero">
+        <div className="hero home-hero">
             <p className="heading">
                 Join Us In Making A Difference
             </p>

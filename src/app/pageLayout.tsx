@@ -11,6 +11,7 @@ const Layout = ({
     hero: React.ReactNode;
     children: React.ReactNode;
 }) => {
+    console.log(hero);
     
     return (
         <div className="charity-landing-page">

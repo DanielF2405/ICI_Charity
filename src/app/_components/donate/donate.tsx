@@ -4,100 +4,36 @@ import React from "react";
 // import { Linkedin } from "./Linkedin";
 // import { Twitter } from "./Twitter";
 // import { Youtube } from "./Youtube";
+// import "../../../styles/donate copy.css";
 import "../../../styles/donate.css";
 import Layout from "~/app/pageLayout";
-import { Hero } from "~/app/_components/donate/hero";
-import { Info } from "./info";
+import { DonateHero } from "~/app/_components/donate/hero";
+import { DonateIntro } from "./info";
+import { DonateForm } from "./form";
 
-export const Frame = (): JSX.Element => {
-  return (
-    <div className="frame">
-      <div >
-        <div className="overlap-4">
-          <div className="overlap-5">
-            <div className="overlap-6">
-              <Info />
-              <div className="div-2">
-                <div className="text-wrapper-16">Choose a donation amount</div>
-                <div className="div-3">
-                  <div className="div-4">
-                    <div className="ellipse-wrapper">
-                      <div className="ellipse-5" />
-                    </div>
-                    <div className="div-wrapper-4">
-                      <div className="text-wrapper-17">£5</div>
-                    </div>
-                  </div>
-                  <div className="div-4">
-                    <div className="group-6" />
-                    <div className="div-wrapper-4">
-                      <div className="text-wrapper-17">£10</div>
-                    </div>
-                  </div>
-                  <div className="div-4">
-                    <div className="group-6" />
-                    <div className="div-wrapper-4">
-                      <div className="text-wrapper-17">£15</div>
-                    </div>
-                  </div>
-                  <p className="text-wrapper-18">Enter a custom donation amount</p>
-                </div>
-              </div>
-              <p className="text-wrapper-19">Welcome to _, Please fill out the form below.</p>
-            </div>
-          </div>
-          <div className="div-6">
-            <div className="text-wrapper-16">Choose a donation frequency</div>
-            <div className="div-7">
-              <div className="div-8">
-                <div className="group-8">
-                  <div className="ellipse-6" />
-                </div>
-                <div className="text-wrapper-22">Monthly</div>
-              </div>
-              <div className="div-9">
-                <div className="group-9" />
-                <div className="text-wrapper-23">Yearly</div>
-              </div>
-              <div className="div-9">
-                <div className="group-9" />
-                <div className="text-wrapper-23">One time</div>
-              </div>
-            </div>
-          </div>
-          <div className="div-10">
-            <div className="group-9" />
-            <div className="text-wrapper-24">Anonymous</div>
-          </div>
-          <p className="text-wrapper-25">Do you want your donation to be anonymous?</p>
-          <div className="text-wrapper-26">Add a message!</div>
-          <div className="component">
-            <div className="overlap-8">
-              <div className="rectangle-6" />
-              <div className="text-wrapper-27">Your message...</div>
-              <img className="line-2" alt="Line" src="line-171.svg" />
-              <img className="line-3" alt="Line" src="line-172.svg" />
-            </div>
-          </div>
-        </div>
-        <div className="div-wrapper-5">
-          <div className="text-wrapper-28">Cancel</div>
-        </div>
-        <div className="div-wrapper-6">
-          <div className="text-wrapper-29">Checkout</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-
-const WrappedFrame = (): JSX.Element => {
+// export const Donate = (): JSX.Element => {
+//     return (
+//         <div className="frame">
+//             <div>
+//                 <div className="overlap-4">
+//                     <div className="overlap-5">
+//                         <div className="overlap-6">
+//                             <Info />
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//             <DonateForm />
+//         </div>
+//     );
+// };
+export const Donate: React.FC = () => {
     return (
-        <Layout hero={Hero}>
-            <Frame />
-        </Layout>
-    )
-}
-
-export default WrappedFrame;
+        <div className="donate-page">
+            <DonateIntro />
+            <div className="donate-right">
+                <DonateForm />
+            </div>
+        </div>
+    );
+};

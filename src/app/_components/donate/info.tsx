@@ -1,25 +1,20 @@
 import React from "react";
+import "~/styles/donate.css";
 
-export const Info: React.FC = () => {
+export const DonateIntro: React.FC = () => {
     return (
-        <div>
-            <div className="group-7">
-                <div className="frame-wrapper">
-                    <div className="frame-wrapper-2">
-                        <div className="div-5">
-                            <div className="text-wrapper-20">
-                                Get Involved Today
-                            </div>
-                            <p className="text-wrapper-21">
-                                Your donation helps us provide essential
-                                services and support to those in need. Together,
-                                we can make a difference.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <div className="donate-intro">
+            <div className="intro-text">
+                <h1 className="donate-heading">Get Involved Today</h1>
+                <p className="donate-subheading">
+                    Your donation helps us provide essential services and
+                    support to those in need. Together, we can make a
+                    difference.
+                </p>
             </div>
-            <div className="rectangle-5" />
+            <div className="intro-image">
+                <div className="donate-placeholder">[Image Placeholder]</div>
+            </div>
         </div>
     );
 };
