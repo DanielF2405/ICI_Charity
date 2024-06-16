@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "~/app/pageLayout";
 import { ComingSoonHero } from "~/app/comingSoon";
 import { ComingSoon } from "~/app/comingSoon";
+import "../styles/globals.css";
+import "~/styles/styleguide.css";
 
 const WrappedComingSoon = (): JSX.Element => {
     return (

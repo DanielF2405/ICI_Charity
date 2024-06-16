@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+import { useSession, signIn } from "next-auth/react";
 import "~/styles/donate.css";
 
 const currencies = [
     { code: "GBP", label: "British Pound" },
     { code: "USD", label: "US Dollar" },
-    { code: "EUR", label: "Euro" }
+    { code: "EUR", label: "Euro" },
 ];
 
 const donationAmounts = [5, 10, 15];
 
 export const DonateForm: React.FC = () => {
+    const { data: session } = useSession();
     const [selectedAmount, setSelectedAmount] = useState<string>("");
     const [customAmount, setCustomAmount] = useState<string>("");
-    const [selectedFrequency, setSelectedFrequency] = useState<string>("monthly");
+    const [selectedFrequency, setSelectedFrequency] =
+        useState<string>("monthly");
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
     const [currency, setCurrency] = useState<string>("GBP");
 
@@ -29,7 +32,9 @@ export const DonateForm: React.FC = () => {
         setIsAnonymous(!isAnonymous);
     };
 
-    const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleCustomAmountChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setSelectedAmount("");
         setCustomAmount(e.target.value);
     };
@@ -52,10 +57,17 @@ export const DonateForm: React.FC = () => {
 
     return (
         <form className="donate-form">
-            <p className="donate-welcome">Welcome to our donation page. Please fill out the form below.</p>
+            <p className="donate-welcome">
+                Welcome to our donation page. Please fill out the form below.
+            </p>
             <div className="currency-selector">
                 <label htmlFor="currency-select">Choose a currency:</label>
-                <select id="currency-select" value={currency} onChange={handleCurrencyChange} className="currency-select">
+                <select
+                    id="currency-select"
+                    value={currency}
+                    onChange={handleCurrencyChange}
+                    className="currency-select"
+                >
                     {currencies.map(({ code, label }) => (
                         <option key={code} value={code}>
                             {code} - {label}
@@ -68,20 +80,31 @@ export const DonateForm: React.FC = () => {
                 {donationAmounts.map((amount) => (
                     <label
                         key={amount}
-                        className={`radio-label ${selectedAmount === amount.toString() ? "selected" : ""}`}
+                        className={`radio-label ${
+                            selectedAmount === amount.toString()
+                                ? "selected"
+                                : ""
+                        }`}
                         onClick={() => handleAmountChange(amount.toString())}
                     >
-                        <input type="radio" name="amount" value={amount} className="radio-input" checked={selectedAmount === amount.toString()} readOnly />
+                        <input
+                            type="radio"
+                            name="amount"
+                            value={amount}
+                            className="radio-input"
+                            checked={selectedAmount === amount.toString()}
+                            readOnly
+                        />
                         {getCurrencySymbol()}
                         {amount}
                     </label>
                 ))}
-                <input 
-                    type="number" 
-                    placeholder={`Enter a custom donation amount (${getCurrencySymbol()})`} 
-                    className="custom-donation-input" 
-                    value={customAmount} 
-                    onChange={handleCustomAmountChange} 
+                <input
+                    type="number"
+                    placeholder={`Enter a custom donation amount (${getCurrencySymbol()})`}
+                    className="custom-donation-input"
+                    value={customAmount}
+                    onChange={handleCustomAmountChange}
                 />
             </fieldset>
             <fieldset className="donation-frequency">
@@ -90,28 +113,69 @@ export const DonateForm: React.FC = () => {
                     {["monthly", "yearly", "onetime"].map((frequency) => (
                         <label
                             key={frequency}
-                            className={`radio-label ${selectedFrequency === frequency ? "selected" : ""}`}
+                            className={`radio-label ${
+                                selectedFrequency === frequency
+                                    ? "selected"
+                                    : ""
+                            }`}
                             onClick={() => handleFrequencyChange(frequency)}
                         >
-                            <input type="radio" name="frequency" value={frequency} className="radio-input" checked={selectedFrequency === frequency} readOnly />
-                            {frequency.charAt(0).toUpperCase() + frequency.slice(1)}
+                            <input
+                                type="radio"
+                                name="frequency"
+                                value={frequency}
+                                className="radio-input"
+                                checked={selectedFrequency === frequency}
+                                readOnly
+                            />
+                            {frequency.charAt(0).toUpperCase() +
+                                frequency.slice(1)}
                         </label>
                     ))}
                 </div>
             </fieldset>
             <fieldset className="donation-anonymous">
                 <label className="checkbox-label">
-                    <input type="checkbox" name="anonymous" className="checkbox-input" checked={isAnonymous} onChange={handleAnonymousChange} />
+                    <input
+                        type="checkbox"
+                        name="anonymous"
+                        className="checkbox-input"
+                        checked={isAnonymous}
+                        onChange={handleAnonymousChange}
+                    />
                     Do you want your donation to be anonymous?
                 </label>
             </fieldset>
             <fieldset className="donation-message">
                 <label htmlFor="message-input">Add a message!</label>
-                <textarea id="message-input" placeholder="Your message..." className="message-input"></textarea>
+                <textarea
+                    id="message-input"
+                    placeholder="Your message..."
+                    className="message-input"
+                ></textarea>
             </fieldset>
             <div className="donate-buttons">
-                <button type="button" className="cancel-button">Cancel</button>
-                <button type="submit" className="checkout-button">Checkout</button>
+                <button type="button" className="cancel-button">
+                    Cancel
+                </button>
+                {!session && !isAnonymous ? (
+                    <>
+                        <p className="login-required">
+                            You need to log in to proceed with the checkout.
+                        </p>
+                        <button
+                            type="button"
+                            className="checkout-button"
+                            onClick={() => signIn()}
+                        >
+                            Login
+                        </button>
+                    </>
+                ) : (
+                    <button type="submit" className="checkout-button">
+                        Checkout
+                    </button>
+                )}
             </div>
         </form>
     );

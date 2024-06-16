@@ -1,6 +1,10 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import { getServerAuthSession } from "~/server/auth";
 import "~/styles/header.css";
+
+
 
 export function Header({ children }: { children: React.ReactNode }) {
     const links = [
@@ -11,25 +15,14 @@ export function Header({ children }: { children: React.ReactNode }) {
         { name: "Partners", url: "/partners" },
         { name: "Feedback", url: "/feedback" },
     ];
+
+    
+
     return (
-        <div className="header">
-            {/* <nav className="navigation-menu">
-            <div className="ellipse-7" />
-                <div className="frame-2">
-                    <div className="text-wrapper-23">Login</div>
-                </div>
-                <div className="frame-3">
-                    <div className="text-wrapper-24">Signup</div>
-                </div>
-                <div className="navbar">
-                    {links.map((link) => (
-                        <div key={link.url} className="text-wrapper-25">{link.name}</div>
-                    ))}
-                </div>
-            </nav> */}
+        <div className="header-container">
             <nav className="navigation-menu">
-                <div className="ellipse-7" />
-                <div className="navbar">
+                <div className="ellipse-decoration" />
+                <div className="navbar-container">
                     {links.map((link) => (
                         <div key={link.url} className="nav-link">
                             <Link href={link.url}>
@@ -38,16 +31,36 @@ export function Header({ children }: { children: React.ReactNode }) {
                         </div>
                     ))}
                 </div>
-                <div className="auth-buttons">
-                <div className="frame login-frame">
-                    <div className="text-wrapper">Login</div>
-                </div>
-                <div className="frame signup-frame">
-                    <div className="text-wrapper">Signup</div>
-                </div>
-                </div>
+                <AuthButtons />
             </nav>
             {children}
         </div>
     );
+}
+
+function AuthButtons() {
+    const { data: session } = useSession();
+    return (
+        <div className="auth-buttons-container">
+      {session ? (
+        <div className="user-dropdown">
+          <span>Logged in as {session.user?.name}</span>
+          <div className="dropdown-content">
+            <Link href="/account">My Account</Link>
+            <Link href="/api/auth/signout">Logout</Link>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Link href="/api/auth/signin" className="button-frame login-frame">
+            <div className="text-content">Login</div>
+          </Link>
+          <Link href="/signup" className="button-frame signup-frame">
+            <div className="text-content">Signup</div>
+          </Link>
+        </>
+      )}
+    </div>
+    );
+
 }

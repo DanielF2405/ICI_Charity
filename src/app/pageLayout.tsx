@@ -1,8 +1,9 @@
-// "use client";
+"use client";
 // Layout.js
 import React, { use, useEffect } from "react";
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
+import { SessionProvider } from "next-auth/react";
 
 const Layout = ({
     hero,
@@ -14,6 +15,7 @@ const Layout = ({
     console.log(hero);
     
     return (
+        <SessionProvider>
         <div className="charity-landing-page">
             <div className="main-content">
                 <Header>{hero}</Header>
@@ -21,6 +23,7 @@ const Layout = ({
                 <Footer />
             </div>
         </div>
+        </SessionProvider>
     );
 };
 

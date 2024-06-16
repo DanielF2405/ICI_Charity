@@ -5,6 +5,8 @@ import React from "react";
 // import { Twitter } from "./Twitter";
 // import { Youtube } from "./Youtube";
 import "../styles/donate.css";
+import "../styles/globals.css"
+import "~/styles/styleguide.css";;
 import Layout from "~/app/pageLayout";
 import { DonateHero } from "~/app/_components/donate/hero";
 import { Donate } from "~/app/_components/donate/donate";
