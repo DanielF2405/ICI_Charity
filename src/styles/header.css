@@ -89,13 +89,12 @@
     justify-content: left;
 }
 
-
 .auth-buttons-container {
     display: flex;
     align-items: center;
-  }
-  
-  .button-frame {
+}
+
+.button-frame {
     align-items: center;
     border-radius: 5px;
     display: inline-flex;
@@ -103,42 +102,51 @@
     padding: 15px 30px;
     cursor: pointer;
     margin: 0 10px;
-  }
-  
-  .login-frame {
+}
+
+.login-frame {
     border: 1px solid #125088;
     color: #125088;
-  }
-  
-  .signup-frame {
+}
+
+.signup-frame {
     background-color: #125088;
     color: #faf5e4;
-  }
-  
-  .user-dropdown {
+}
+
+.user-dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .user-dropdown:hover .dropdown-content {
+}
+
+.user-dropdown:hover .dropdown-content {
     display: block;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dropdown-content a {
+}
+
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #f1f1f1}
-  
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.loading-spinner {
+    font-family: "DM Sans-Medium", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    position: relative;
+}

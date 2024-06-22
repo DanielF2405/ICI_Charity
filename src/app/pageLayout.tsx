@@ -12,17 +12,15 @@ const Layout = ({
     hero: React.ReactNode;
     children: React.ReactNode;
 }) => {
-    console.log(hero);
-    
     return (
         <SessionProvider>
-        <div className="charity-landing-page">
-            <div className="main-content">
-                <Header>{hero}</Header>
-                <div className="content">{children}</div>
-                <Footer />
+            <div className="charity-landing-page">
+                <div className="main-content">
+                    <Header>{hero}</Header>
+                    <div className="content">{children}</div>
+                    <Footer />
+                </div>
             </div>
-        </div>
         </SessionProvider>
     );
 };

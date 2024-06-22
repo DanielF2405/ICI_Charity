@@ -16,6 +16,7 @@ export const ComingSoon: React.FC = () => {
 };
 
 export const ComingSoonHero: React.FC = () => {
+    console.log("Coming soon hero")
     return (
         <div className="coming-soon-hero">
             <div className="overlap-23">

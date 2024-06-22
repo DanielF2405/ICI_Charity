@@ -1,0 +1,55 @@
+.account-page {
+    /* background-color: #faf5e4; */
+    padding: 20px;
+    font-family: "Quicksand", Helvetica, Arial, sans-serif;
+}
+
+.account-page h1,
+.account-page h2 {
+    color: #191919;
+    font-family: "Urbanist-SemiBold", Helvetica, Arial, sans-serif;
+}
+
+.account-details p,
+.donation-item p {
+    color: #343434;
+    font-family: "Quicksand-Medium", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.donations-section {
+    margin-top: 20px;
+}
+
+.donations-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.donation-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.account-actions {
+    margin-top: 20px;
+}
+
+.action-button {
+    background-color: #125088;
+    color: #faf5e4;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: "Quicksand-SemiBold", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.action-button:hover {
+    background-color: #0a3a6e;
+}
