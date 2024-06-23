@@ -1,7 +1,7 @@
 import React from "react";
-import "../../../styles/donate.css";
+import "~/styles/donate.css";
 import Layout from "~/app/pageLayout";
-import { DonateHero } from "~/app/_components/donate/hero";
+import { DonateHero } from "~/app/donate/hero";
 import { DonateIntro } from "./info";
 import { DonateForm } from "./form";
 

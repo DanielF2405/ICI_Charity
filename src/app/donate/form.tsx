@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import "~/styles/donate.css";
@@ -11,7 +12,6 @@ const currencies = [
 ];
 
 const donationAmounts = [5, 10, 15];
-
 
 
 export const DonateForm: React.FC = () => {
@@ -60,40 +60,40 @@ export const DonateForm: React.FC = () => {
         }
     };
 
-    const handleCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        console.log({session, isAnonymous})
-        if (!session && !isAnonymous) {
-            signIn();
-        } else {
-            console.log("Checkout");
-            window.open("https://buy.stripe.com/9AQdROaFs7AF6bufYY");
-        }
-    };
-
-    // const checkoutMutation = api.checkout.createCheckoutSession.useMutation();
-
-    // const handleCheckout = async () => {
+    // const handleCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //     e.preventDefault();
+    //     console.log({session, isAnonymous})
     //     if (!session && !isAnonymous) {
     //         signIn();
-    //         return;
+    //     } else {
+    //         console.log("Checkout");
+    //         window.open("https://buy.stripe.com/9AQdROaFs7AF6bufYY");
     //     }
-
-    //     const amount = customAmount
-    //         ? parseFloat(customAmount)
-    //         : parseFloat(selectedAmount);
-
-    //     // const response = await checkoutMutation.mutateAsync({
-    //     //     amount,
-    //     //     currency,
-    //     //     frequency: selectedFrequency,
-    //     //     anonymous: isAnonymous,
-    //     // });
-    //     // if (response.url) {
-    //     //     window.open(response.url, '_blank');
-    //     // }
-
     // };
+
+    const checkoutMutation = api.checkout.createCheckoutSession.useMutation();
+
+    const handleCheckout = async () => {
+        if (!session && !isAnonymous) {
+            signIn();
+            return;
+        }
+
+        const amount = customAmount
+            ? parseFloat(customAmount)
+            : parseFloat(selectedAmount);
+
+        const response = await checkoutMutation.mutateAsync({
+            amount,
+            currency,
+            frequency: selectedFrequency,
+            anonymous: isAnonymous,
+        });
+        if (response.url) {
+            window.open(response.url, '_blank');
+        }
+
+    };
 
     return (
         <form className="donate-form" onSubmit={(e) => e.preventDefault()}>
