@@ -22,6 +22,7 @@ export const DonateForm: React.FC = () => {
         useState<string>("monthly");
     const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
     const [currency, setCurrency] = useState<string>("GBP");
+    const [message, setMessage] = useState<string>("");
 
     const handleAmountChange = (value: string) => {
         setSelectedAmount(value);
@@ -45,6 +46,10 @@ export const DonateForm: React.FC = () => {
 
     const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(e.target.value);
+    };
+
+    const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMessage(e.target.value);
     };
 
     // useTestTrpc();
@@ -86,6 +91,7 @@ export const DonateForm: React.FC = () => {
         const response = await checkoutMutation.mutateAsync({
             amount,
             currency,
+            message, 
             frequency: selectedFrequency,
             anonymous: isAnonymous,
         });
@@ -191,6 +197,8 @@ export const DonateForm: React.FC = () => {
                 <textarea
                     id="message-input"
                     placeholder="Your message..."
+                    value={message}
+                    onChange={handleMessageChange}
                     className="message-input"
                 ></textarea>
             </fieldset>
