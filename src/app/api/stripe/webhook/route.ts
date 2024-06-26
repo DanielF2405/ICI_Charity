@@ -2,10 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { db } from '~/server/db'; // Adjust the import according to your setup
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2024-04-10',
-});
+import { stripe } from '~/server/stripe'
 
 export async function POST(req: NextRequest) {
     const rawBody = await req.text();
@@ -31,22 +28,46 @@ export async function POST(req: NextRequest) {
         case 'checkout.session.completed': {
             const session = event.data.object as Stripe.Checkout.Session;
             // Save payment info to your database here
-            console.log({session})
+            console.log({ session })
             const metadata = session.metadata || {};
             const userId = metadata.userId || null; // or handle as needed
-            const anonymous = metadata.anonymous === 'true';
-            await db.donation.create({
-                data: {
-                    amount: session.amount_total! / 100, // Stripe amount is in cents
-                    currency: session.currency || 'GBP',
-                    status: session.payment_status,
-                    message: metadata.message || '', // Assuming message is stored in metadata
-                    userId,
-                    frequency: metadata.frequency || 'onetime', // Assuming frequency is stored in metadata
-                    anonymous,
-                    stripeSessionId: session.id,
-                },
-            });
+            const frequency = metadata.frequency || 'onetime';
+            const message = metadata.message || '';
+            const anonymous = metadata.anonymous !== "false"
+            const amount = session.amount_total! / 100; // Stripe amount is in cents
+            const currency = session.currency || 'GBP';
+            const status = session.payment_status;
+
+            // Define common data structure
+            const commonData = {
+                amount,
+                currency,
+                status,
+                message,
+                // userId,
+                user: anonymous ? undefined : { connect: { id: userId } }, // Use the relation to connect the user
+                anonymous,
+            };
+
+            if (frequency === 'onetime') {
+                // Handle one-time donation
+                await db.oneTimeDonation.create({
+                    data: {
+                        ...commonData,
+                        stripeSessionId: session.id,
+                    },
+                });
+            } else {
+                // Handle subscription donation
+                await db.subscription.create({
+                    data: {
+                        ...commonData,
+                        frequency,
+                        stripeSubscriptionId: session.subscription, // Assuming you have the subscription ID from the session
+                    },
+                });
+            }
+
             break;
             // Add other event types as needed
         }

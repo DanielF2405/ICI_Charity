@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import "~/styles/account.css"; // Create a CSS file for custom styles
 import { useSession, signIn } from "next-auth/react";
@@ -28,7 +29,7 @@ const Account: React.FC = () => {
 const renderSection = () => {
     switch (activeSection) {
         case "profile":
-            return <ProfileSection />;
+            return <ProfileSection {...{session}}/>;
         case "oneTimeDonations":
             return <OneTimeDonationsSection donations={donations} />;
         case "subscriptions":
@@ -40,7 +41,7 @@ const renderSection = () => {
                 />
             );
         default:
-            return <ProfileSection />;
+            return <ProfileSection {...{session}}/>;
     }
 };
 

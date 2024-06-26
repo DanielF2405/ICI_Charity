@@ -76,7 +76,8 @@ export const DonateForm: React.FC = () => {
     //     }
     // };
 
-    const checkoutMutation = api.checkout.createCheckoutSession.useMutation();
+    const oneTimeCheckoutSession = api.checkout.createOneTimeCheckoutSession.useMutation();
+    const subscriptionCheckoutSession = api.checkout.createSubscriptionCheckoutSession.useMutation();
 
     const handleCheckout = async () => {
         if (!session && !isAnonymous) {
@@ -88,16 +89,32 @@ export const DonateForm: React.FC = () => {
             ? parseFloat(customAmount)
             : parseFloat(selectedAmount);
 
-        const response = await checkoutMutation.mutateAsync({
-            amount,
-            currency,
-            message, 
-            frequency: selectedFrequency,
-            anonymous: isAnonymous,
-        });
-        if (response.url) {
-            window.open(response.url, '_blank');
-        }
+            const isSubscription = selectedFrequency === 'monthly' || selectedFrequency === 'yearly';
+
+            if (isSubscription) {
+                const response = await subscriptionCheckoutSession.mutateAsync({
+                    amount,
+                    currency,
+                    frequency: selectedFrequency,
+                    anonymous: isAnonymous,
+                    message,
+                });
+        
+                if (response.url) {
+                    window.open(response.url, '_blank');
+                }
+            } else {
+                const response = await oneTimeCheckoutSession.mutateAsync({
+                    amount,
+                    currency,
+                    anonymous: isAnonymous,
+                    message,
+                });
+        
+                if (response.url) {
+                    window.open(response.url, '_blank');
+                }
+            }
 
     };
 
