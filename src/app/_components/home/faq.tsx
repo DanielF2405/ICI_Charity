@@ -22,6 +22,7 @@ export const FAQ: React.FC = () => {
                 {faqs.map((faq, idx) => {
                     return (
                         <div
+                            key={faq.id}
                             className="faq-item"
                             onClick={() => toggleQuestion(idx)}
                         >

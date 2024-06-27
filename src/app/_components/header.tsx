@@ -3,21 +3,32 @@ import Link from "next/link";
 import React from "react";
 import { getServerAuthSession } from "~/server/auth";
 import "~/styles/header.css";
+import logo from "~/assets/Logo.png";
+import { Filler } from "./Filler";
 
 export function Header({ children }: { children: React.ReactNode }) {
     const links = [
         { name: "Home", url: "/" },
         { name: "Donate", url: "/donate" },
-        { name: "About Us", url: "/about" },
+        { name: "About Us", url: "/aboutUs" },
+        { name: "Campaigns", url: "/campaigns" },
         { name: "Contact", url: "/contact" },
         { name: "Partners", url: "/partners" },
         { name: "Feedback", url: "/feedback" },
     ];
 
+    // children is the hero
+
+    const navHeight = 60; // Adjust based on your nav bar height
+    const heroHeight = 200
     return (
         <div className="header-container">
             <nav className="navigation-menu">
-                <div className="ellipse-decoration" />
+                <div className="logo-container">
+                    <Link href={"/"}>
+                        <img src={logo.src} alt="Logo" className="logo" />
+                    </Link>
+                </div>
                 <div className="navbar-container">
                     {links.map((link) => (
                         <div key={link.url} className="nav-link">
@@ -27,7 +38,8 @@ export function Header({ children }: { children: React.ReactNode }) {
                 </div>
                 <AuthButtons />
             </nav>
-            {children}
+            <Filler navHeight={navHeight} heroHeight={heroHeight} />
+            {children} 
         </div>
     );
 }

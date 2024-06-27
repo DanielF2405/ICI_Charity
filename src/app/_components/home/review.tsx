@@ -1,116 +1,45 @@
 // components/Review.tsx
-import React from "react";
+import React, { useMemo, useState } from "react";
+import star from "~/assets/Star.png"
 
-// export const Review: React.FC = () => {
-//     return (
-//         <div className="review">
-//             <div className="overlap-14">
-//                 <div className="group-14">
-//                     <div className="overlap-15">
-//                         <div className="group-15">
-//                             <div className="overlap-16">
-//                                 <div className="rectangle-4" />
-//                                 <div className="text-wrapper-10">
-//                                     Testimonials
-//                                 </div>
-//                                 <img
-//                                     className="arrow-2"
-//                                     alt="Arrow"
-//                                     src="arrow-4.svg"
-//                                 />
-//                                 <div className="group-16">
-//                                     <div className="overlap-group-4">
-//                                         <div className="text-wrapper-11">
-//                                             ......
-//                                         </div>
-//                                         <div className="text-wrapper-12">
-//                                             9th June, 2022
-//                                         </div>
-//                                         <div className="group-17">
-//                                             <img
-//                                                 className="ellipse-2"
-//                                                 alt="Ellipse"
-//                                                 src="ellipse-5.png"
-//                                             />
-//                                             <div className="group-18">
-//                                                 <div className="text-wrapper-13">
-//                                                     Title
-//                                                 </div>
-//                                                 <div className="text-wrapper-14">
-//                                                     Jonathon Smith
-//                                                 </div>
-//                                             </div>
-//                                         </div>
-//                                         <div className="group-19">
-//                                             <img
-//                                                 className="star"
-//                                                 alt="Star"
-//                                                 src="star-7.svg"
-//                                             />
-//                                             <img
-//                                                 className="star-2"
-//                                                 alt="Star"
-//                                                 src="star-8.svg"
-//                                             />
-//                                             <img
-//                                                 className="star-3"
-//                                                 alt="Star"
-//                                                 src="star-9.svg"
-//                                             />
-//                                             <img
-//                                                 className="star-4"
-//                                                 alt="Star"
-//                                                 src="star-10.svg"
-//                                             />
-//                                             <img
-//                                                 className="star-5"
-//                                                 alt="Star"
-//                                                 src="star-11.svg"
-//                                             />
-//                                         </div>
-//                                         <div className="rectangle-wrapper">
-//                                             <div className="rectangle-5" />
-//                                         </div>
-//                                     </div>
-//                                     <img
-//                                         className="vector"
-//                                         alt="Vector"
-//                                         src="vector.svg"
-//                                     />
-//                                 </div>
-//                                 <div className="group-20">
-//                                     <div className="ellipse-3" />
-//                                     <div className="ellipse-4" />
-//                                     <div className="ellipse-5" />
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <img
-//                             className="arrow-3"
-//                             alt="Arrow"
-//                             src="arrow-5.svg"
-//                         />
-//                     </div>
-//                 </div>
-//                 <div className="mask-group">
-//                     <div className="group-21">
-//                         <img
-//                             className="group-22"
-//                             alt="Group"
-//                             src="group-427318995.png"
-//                         />
-//                         <img className="group-23" alt="Group" src="image.png" />
-//                         <p className="what-others-had-to">
-//                             What Others Had To Say
-//                         </p>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
+export const testimonials = [
+    {
+        id: 0,
+        name: "John Doe",
+        username: "JD1",
+        content: "This charity has changed my life.",
+        date: new Date("2023-01-01"),
+        rating: 3,
+    },
+    {
+        id: 1,
+        name: "Jane Smith",
+        username: "JS1",
+        content: "I am so grateful for the support.",
+        date: new Date("2023-02-01"),
+        rating: 4,
+    },
+    {
+        id: 2,
+        name: "Jane Doe",
+        username: "JD2",
+        content: "This charity has changed my life again.",
+        date: new Date("2023-01-01"),
+        rating: 5,
+    },
+    // Add more testimonials as needed
+] as const;
 
 export const Review: React.FC = () => {
+    const [activeId, setActiveId] = useState(1);
+    const active = useMemo(() => {
+        return testimonials.find((t) => t.id === activeId)
+    }, [activeId]);
+
+    if (!active) return <></>
+
+    const inds = [...Array(Math.min(3, testimonials.length))] as const;
+
     return (
         <div className="review">
             <div className="review-header">
@@ -120,31 +49,94 @@ export const Review: React.FC = () => {
             <div className="testimonial-card">
                 <div className="testimonial-content">
                     <div className="testimonial-header">
-                        <img className="profile-pic" alt="Profile" src="ellipse-5.png" />
+                        <img
+                            className="profile-pic"
+                            alt="Profile"
+                            src="ellipse-5.png"
+                        />
                         <div>
-                            <h3>Jonathon Smith</h3>
-                            <p>Title</p>
+                            <h3>{active.name}</h3>
+                            <p>{active.username}</p>
                         </div>
                     </div>
-                    <p className="testimonial-text">......</p>
-                    <p className="testimonial-date">9th June, 2022</p>
+                    <p className="testimonial-text">{active.content}</p>
+                    <p className="testimonial-date">
+                        {active.date.toDateString()}
+                    </p>
                     <div className="testimonial-rating">
-                        <img className="star" alt="Star" src="star-7.svg" />
-                        <img className="star" alt="Star" src="star-8.svg" />
-                        <img className="star" alt="Star" src="star-9.svg" />
-                        <img className="star" alt="Star" src="star-10.svg" />
-                        <img className="star" alt="Star" src="star-11.svg" />
+                        {[...Array(active.rating)].map((_, i) => {
+                            return (
+                                <img
+                                    key={i}
+                                    className="star"
+                                    alt="Star"
+                                    src={star.src}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
             <div className="navigation-arrows">
-                <img className="arrow" alt="Previous" src="arrow-4.svg" />
-                <img className="arrow" alt="Next" src="arrow-5.svg" />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="117"
+                    height="16"
+                    viewBox="0 0 47 16"
+                    fill="none"
+                    onClick={() => {
+                        setActiveId((id) => Math.max(id - 1, 0));
+                    }}
+                >
+                    <path
+                        d="M0.292893 7.29277C-0.0976311 7.6833 -0.0976311 8.31646 0.292893 8.70698L6.65685 15.0709C7.04738 15.4615 7.68054 15.4615 8.07107 15.0709C8.46159 14.6804 8.46159 14.0473 8.07107 13.6567L2.41421 7.99988L8.07107 2.34302C8.46159 1.9525 8.46159 1.31934 8.07107 0.928811C7.68054 0.538286 7.04738 0.538286 6.65685 0.928811L0.292893 7.29277ZM46 8.99988C46.5523 8.99988 47 8.55217 47 7.99988C47 7.4476 46.5523 6.99988 46 6.99988L46 8.99988ZM1 8.99988L46 8.99988L46 6.99988L1 6.99988L1 8.99988Z"
+                        fill="#FAF5E4"
+                    />
+                </svg>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="117"
+                    height="24"
+                    viewBox="0 0 117 24"
+                    fill="none"
+                    onClick={() => {
+                        setActiveId((id) =>
+                            Math.min(id + 1, testimonials.length - 1)
+                        );
+                    }}
+                >
+                    <path
+                        d="M2 10.4999C1.17157 10.4999 0.5 11.1715 0.5 11.9999C0.5 12.8283 1.17157 13.4999 2 13.4999V10.4999ZM116.061 13.0605C116.646 12.4748 116.646 11.525 116.061 10.9392L106.515 1.39328C105.929 0.807489 104.979 0.807489 104.393 1.39328C103.808 1.97906 103.808 2.92881 104.393 3.5146L112.879 11.9999L104.393 20.4852C103.808 21.0709 103.808 22.0207 104.393 22.6065C104.979 23.1923 105.929 23.1923 106.515 22.6065L116.061 13.0605ZM2 13.4999H115V10.4999H2V13.4999Z"
+                        fill="#FAF5E4"
+                    />
+                </svg>
             </div>
             <div className="testimonial-indicators">
-                <div className="indicator active"></div>
+                {inds.map((ind, i) => {
+                    const idx = testimonials.findIndex((t) => {
+                        return t.id === active.id;
+                    });
+                    // const isActive = !idx || testimonials.length - idx === 1
+                    let isActive: boolean;
+                    console.log({ idx, i });
+                    switch (idx) {
+                        case 0:
+                            isActive = i === 0;
+                            break;
+                        case testimonials.length - 1:
+                            isActive = testimonials.length - i === 1;
+                            break;
+                        default:
+                            isActive = i === 1;
+                    }
+
+                    const act = isActive ? " active" : "";
+
+                    return <div key={i} className={`indicator${act}`}></div>;
+                })}
+                {/* <div className="indicator active"></div>
                 <div className="indicator"></div>
-                <div className="indicator"></div>
+                <div className="indicator"></div> */}
             </div>
         </div>
     );

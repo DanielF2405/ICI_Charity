@@ -8,7 +8,7 @@ import { Hero } from "~/app/_components/hero";
 
 
 const WrappedComingSoon = (): JSX.Element => {
-    const title = "Our Partners"
+    const title = "Campaigns"
     const subheading = "Together, We Can Create a Brighter Future for Communities in Need"
     return (
         <Layout hero={<Hero title={title} subheading={subheading} />}>

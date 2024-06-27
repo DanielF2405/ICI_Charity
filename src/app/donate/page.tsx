@@ -5,11 +5,14 @@ import "~/styles/styleguide.css";;
 import Layout from "~/app/pageLayout";
 import { DonateHero } from "~/app/donate/hero";
 import { Donate } from "~/app/donate/donate";
+import { Hero } from "../_components/hero";
 
 
 const WrappedFrame = (): JSX.Element => {
+    const title = "Donate"
+    const subheading = "Together, We Can Create a Brighter Future for Communities in Need"
     return (
-        <Layout hero={<DonateHero />}>
+        <Layout hero={<Hero title={title} subheading={subheading} />}>
             <Donate />
         </Layout>
     );

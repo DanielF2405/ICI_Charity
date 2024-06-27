@@ -127,6 +127,7 @@ export const Pricing: React.FC = () => {
                     {options.map((opt) => {
                         return (
                             <button
+                                key={opt.title}
                                 value={opt.title}
                                 onClick={() => {
                                     setSelected(opt.title);
@@ -146,6 +147,7 @@ export const Pricing: React.FC = () => {
                     console.log(card.tier, selectedTier)
                     return (
                         <div
+                            key={card.tier}
                             className={`pricing-card ${card.tier}${
                                 card.tier === selectedTier ? " highlighted" : ""
                             }`}

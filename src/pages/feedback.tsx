@@ -4,12 +4,14 @@ import { ComingSoonHero } from "~/app/comingSoon";
 import { ComingSoon } from "~/app/comingSoon";
 import "../styles/globals.css";
 import "~/styles/styleguide.css";
+import { Hero } from "~/app/_components/hero";
+
 
 const WrappedComingSoon = (): JSX.Element => {
+    const title = "Have Your Say!"
+    const subheading = "Together, We Can Create a Brighter Future for Communities in Need"
     return (
-        <Layout hero={<ComingSoonHero />}>
-            <h1>Coming Soon</h1>
-            <h1>Feedback!</h1>
+        <Layout hero={<Hero title={title} subheading={subheading} />}>
             <ComingSoon />
         </Layout>
     );

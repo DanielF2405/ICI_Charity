@@ -6,6 +6,8 @@ import TwitterIcon from "../../assets/twitter.png";
 import InstagramIcon from "../../assets/instagram.png";
 import LinkedInIcon from "../../assets/linkedin.png";
 import "~/styles/footer.css";
+import Link from "next/link";
+import logo from "~/assets/Logo.png"
 
 // export const Footer: React.FC = () => {
 //     return (
@@ -75,14 +77,20 @@ export const Footer: React.FC = () => {
             <div className="footer-container">
                 <div className="footer-content">
                     <div className="footer-section-top">
-                        <div
+                        {/* <div
                             style={{
                                 width: 304,
                                 height: 98,
                                 background: "#D9D9D9",
                                 borderRadius: 9999,
                             }}
-                        />
+                        /> */}
+
+                <div className="logo-container">
+                    <Link href={"/"}>
+                        <img src={logo.src} alt="Logo" className="logo" />
+                    </Link>
+                </div>
                         <div className="footer-section subscribe">
                             <h4>Subscribe to our newsletter</h4>
                             {/* <form>

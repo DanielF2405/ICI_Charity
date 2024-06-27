@@ -1,5 +1,6 @@
 import React from "react";
 import "~/styles/donate.css";
+import image from "~/assets/Header.png"
 
 export const DonateIntro: React.FC = () => {
     return (
@@ -13,7 +14,9 @@ export const DonateIntro: React.FC = () => {
                 </p>
             </div>
             <div className="intro-image">
-                <div className="donate-placeholder">[Image Placeholder]</div>
+            <div className="hero-image-container">
+                <img src={image.src} alt="Hero Image" className="hero-image" />
+            </div>
             </div>
         </div>
     );
