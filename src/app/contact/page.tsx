@@ -1,22 +1,20 @@
 import React from "react";
 import Layout from "~/app/pageLayout";
 import { ComingSoonHero } from "~/app/comingSoon";
-import  Account  from "~/app/myAccount/account";
+// import { ComingSoon } from "~/app/comingSoon";
 import "~/styles/globals.css";
 import "~/styles/styleguide.css";
-import { DonateHero } from "~/app/donate/hero";
-import { Hero } from "../_components/hero";
+import { Hero } from "~/app/_components/hero";
+import { Contact } from "./contact";
 
 export const runtime = "edge"
 
 const WrappedComingSoon = (): JSX.Element => {
-    const title = "My Account"
-    const subheading = "Manage your account"
+    const title = "Contact Us!"
+    const subheading = "Together, We Can Create a Brighter Future for Communities in Need"
     return (
         <Layout hero={<Hero title={title} subheading={subheading} />}>
-        {/* <h1>Coming Soon</h1>
-        <h1>Partners!</h1> */}
-            <Account />
+            <Contact />
         </Layout>
     );
 };

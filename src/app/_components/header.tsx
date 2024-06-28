@@ -13,6 +13,7 @@ export function Header({ children }: { children: React.ReactNode }) {
         { name: "About Us", url: "/aboutUs" },
         { name: "Campaigns", url: "/campaigns" },
         { name: "Contact", url: "/contact" },
+        { name: "FAQs", url: "/faqs" },
         { name: "Partners", url: "/partners" },
         { name: "Feedback", url: "/feedback" },
     ];

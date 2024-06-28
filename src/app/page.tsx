@@ -5,7 +5,7 @@ import { api } from "~/trpc/server";
 // import "~/styles/styles.css";
 import { Home as HomePage } from "~/app/_components/home/home";
 import { Footer } from "./_components/footer";
-import { FAQ } from "./_components/home/faq";
+import { FAQ } from "./_components/home/faqs";
 import { Pricing } from "./_components/home/pricing";
 import { Review } from "./_components/home/review";
 import { Impact } from "./_components/home/impact";
@@ -18,6 +18,9 @@ import { Frame } from "./donate/page";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import  Layout  from "./pageLayout";
 import "~/styles/styleguide.css";
+
+export const runtime = "edge"
+
 // const Layout = ({
 //     hero,
 //     children,

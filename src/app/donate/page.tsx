@@ -7,6 +7,7 @@ import { DonateHero } from "~/app/donate/hero";
 import { Donate } from "~/app/donate/donate";
 import { Hero } from "../_components/hero";
 
+export const runtime = "edge"
 
 const WrappedFrame = (): JSX.Element => {
     const title = "Donate"

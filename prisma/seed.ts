@@ -1,13 +1,25 @@
 // prisma/seed.ts
 import { PrismaClient } from '@prisma/client';
-import { faqs, impacts, pages, partners, sections, stats, testimonials } from './seedData';
+// import { faqs, impacts, pages, partners, sections, stats, testimonials } from './seedData';
+
+const sections = [
+    {
+        title: "Contact Us",
+        content: [
+            {
+                title: "Contact Us",
+                content: "Reach out for support, to ask questions, or to join our cause. Together, we can make a world of difference. (Use the contact form)"
+            }
+        ]
+    }
+]
 
 const prisma = new PrismaClient();
 
 async function main() {
     console.log("Seeding")
 
-    await prisma.page.createMany({ data: pages });
+    // await prisma.page.createMany({ data: pages });
 
 
     for (const section of sections) {
@@ -34,7 +46,7 @@ async function main() {
     // await prisma.testimonial.createMany({ data: testimonials });
     // await prisma.impact.createMany({ data: impacts });
     // await prisma.stat.createMany({ data: stats });
-    await prisma.fAQ.createMany({ data: faqs });
+    // await prisma.fAQ.createMany({ data: faqs });
 
     console.log('Seeding completed.');
 }

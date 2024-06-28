@@ -7,7 +7,7 @@ import InstagramIcon from "../../assets/instagram.png";
 import LinkedInIcon from "../../assets/linkedin.png";
 import "~/styles/footer.css";
 import Link from "next/link";
-import logo from "~/assets/Logo.png"
+import logo from "~/assets/Logo.png";
 
 // export const Footer: React.FC = () => {
 //     return (
@@ -86,11 +86,15 @@ export const Footer: React.FC = () => {
                             }}
                         /> */}
 
-                <div className="logo-container">
-                    <Link href={"/"}>
-                        <img src={logo.src} alt="Logo" className="logo" />
-                    </Link>
-                </div>
+                        <div className="logo-container">
+                            <Link href={"/"}>
+                                <img
+                                    src={logo.src}
+                                    alt="Logo"
+                                    className="logo"
+                                />
+                            </Link>
+                        </div>
                         <div className="footer-section subscribe">
                             <h4>Subscribe to our newsletter</h4>
                             {/* <form>
@@ -133,16 +137,22 @@ export const Footer: React.FC = () => {
                         </div>
                         <div className="footer-section foundation">
                             <h4>Foundation</h4>
-                            <ul>
-                                <li>Donate</li>
-                                <li>About Us</li>
-                                <li>Impact</li>
-                                <li>FAQs</li>
-                                <li>Terms / Privacy</li>
-                                <li>Help Center</li>
-                                <li>Contact Us</li>
-                                <li>Partners</li>
-                            </ul>
+                            <div>
+                                <ul>
+                                    <li>Donate</li>
+                                    <li>About Us</li>
+                                    <li>Impact</li>
+                                    <li>FAQs</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>Terms / Privacy</li>
+                                    <li>Help Center</li>
+                                    <li>Contact Us</li>
+                                    <li>Partners</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

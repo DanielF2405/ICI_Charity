@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
+export const runtime = "edge"
+
 const Success: React.FC = () => {
     return (
         <div className="payment-status-page">

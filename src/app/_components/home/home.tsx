@@ -2,7 +2,7 @@
 // components/CharityLandingPage.tsx
 import React from "react";
 import { Footer } from "../footer";
-import { FAQ } from "./faq";
+import { FAQ } from "./faqs";
 import { Pricing } from "./pricing";
 import { Review } from "./review";
 import { Impact } from "./impact";
@@ -29,7 +29,7 @@ export const Home: React.FC = () => {
           <Stats />
           <Pricing />
           <Review />
-          <FAQ />
+          <FAQ n={3}/>
         </div>
         {/* <Footer /> */}
       </>
