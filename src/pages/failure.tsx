@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export const runtime = "edge"
+export const runtime = "experimental-edge"
 
 const Failure: React.FC = () => {
     return (

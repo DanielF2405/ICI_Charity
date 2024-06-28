@@ -1,6 +1,6 @@
 "use client";
 // Layout.js
-import React, { use, useEffect } from "react";
+import React, { use } from "react";
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
 import { SessionProvider } from "next-auth/react";

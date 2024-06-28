@@ -6,7 +6,7 @@ import "../styles/globals.css";
 import "~/styles/styleguide.css";
 import { Hero } from "~/app/_components/hero";
 
-export const runtime = "edge"
+export const runtime = "experimental-edge"
 
 const WrappedComingSoon = (): JSX.Element => {
     const title = "Campaigns"

@@ -1,7 +1,7 @@
 
 import "../styles/globals.css";
 import { signIn } from "next-auth/react";
-import "~/styles/login.css";
+// import "~/styles/login.css";
 
 const Login = () => {
     return (
