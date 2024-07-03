@@ -13,6 +13,7 @@
 // next.config.js
 // import { config as dotenvConfig } from 'dotenv';
 // dotenvConfig(); // Load environment variables
+import path from "path";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -26,8 +27,13 @@ const nextConfig = {
     //     fs: 'empty',
     //   };
     }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '~': path.resolve(process.cwd(), 'src'),
+      'pg-native': false
+    };
 
-    config.resolve.alias['pg-native'] = false;
+    // config.resolve.alias['pg-native'] = false;
 
     return config;
   },
