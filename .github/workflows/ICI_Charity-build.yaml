@@ -35,7 +35,19 @@ jobs:
       - name: Build Node assets
         env:
           CI: true
+          DATABASE_URL: postgresql://postgres:Daniel1212@localhost:5432/ici_charity
+          DB_PASSWORD: Daniel1212
+          DISCORD_CLIENT_ID: 608760207533-rmmvcepij851d64f1nl3k0e6nbojpq5k.apps.googleusercontent.com
+          DISCORD_CLIENT_SECRET: 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
+          GOOGLE_CLIENT_ID: 608760207533-rmmvcepij851d64f1nl3k0e6nbojpq5k.apps.googleusercontent.com
+          GOOGLE_CLIENT_SECRET: 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
+          NEXT_PUBLIC_BASE_URL: http://localdev.com:3000
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: pk_test_51PS1KMDq5dJksEggqZJYqvELaQaLsFWqqDYlm96T93iIkzSr1466XDcYrUDKweXOPSUsWprgkaickxClgRtqrHlZ0040aF2T92
+          NEXTAUTH_SECRET: uIiaFujwWfxl0n5fq0jkrEDr2AbLp7gHGZwMG+ii8pk=
+          NEXTAUTH_URL: http://localdev.com:3000
           SITE_URL: ${{ inputs.site-url }}
+          STRIPE_SECRET_KEY: sk_test_51PS1KMDq5dJksEgg2gUlPkMcvrU3kgZYVxYnrVhuo26dMxcIvWrclYsRRUDML2S7ozjLIvawWlsZsNxy0sGl08Qu005VRzwflC
+          STRIPE_WEBHOOK_SECRET: whsec_0b611d64659572e1c02b07fb69d76762c00982327d2aac84866154305b6231e4
         run: |
           npm ci
           npm run build
@@ -46,7 +58,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: 7f61c81a-fd36-431b-956c-511b9825024a
+          project-id: 38f3bfad-9e11-4d73-8e71-7ed3eef5f2cc
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
