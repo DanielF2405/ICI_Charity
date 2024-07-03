@@ -1,3 +1,7 @@
+import { OneTimeDonation, Subscription } from "@prisma/client";
+
+type Donation = Subscription | OneTimeDonation
+
 export const donations: Donation[] = [
     {
       id: "1",

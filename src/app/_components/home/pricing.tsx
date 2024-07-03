@@ -115,7 +115,7 @@ export const Pricing: React.FC = () => {
         return options.find((option) => {
             return option.title === selected;
         });
-    }, [selected]);
+    }, [selected, options]);
 
 
 

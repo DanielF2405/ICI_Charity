@@ -1,5 +1,7 @@
-import { Donation } from "@prisma/client";
+import { OneTimeDonation, Subscription} from "@prisma/client";
 import React from "react";
+
+type Donation = OneTimeDonation | Subscription
 
 interface DonationsListProps {
     title: string;
@@ -20,7 +22,7 @@ export const DonationsList: React.FC<DonationsListProps> = ({ title, donations, 
                     >
                         <div className="donation-details">
                             <p className="donation-amount">{donation.currency} {donation.amount}</p>
-                            <p className="donation-frequency">Frequency: {donation.frequency}</p>
+                            {/* <p className="donation-frequency">Frequency: {donation || ""}</p> */}
                             <p className="donation-status">Status: {donation.status}</p>
                             <p className="donation-message">Message: {donation.message || "No message"}</p>
                             <p className="donation-date">Date: {new Date(donation.createdAt).toDateString()}</p>

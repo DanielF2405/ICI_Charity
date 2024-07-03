@@ -5,19 +5,21 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await signIn("credentials", {
-      redirect: false,
-      username,
-      password
-    });
-  };
+//   const handleSubmit = async (e: any) => {
+//     e.preventDefault();
+//     await signIn("credentials", {
+//       redirect: false,
+//       username,
+//       password
+//     });
+//   };
 
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form 
+    //   onSubmit={handleSubmit}
+      >
         <label>
           Username:
           <input

@@ -18,7 +18,7 @@ export const sections = [
                 title: "About Us",
                 content: "Welcome to our charity – a beacon of hope and empowerment for people with disabilities across the United Kingdom. Our mission is simple yet profound, to create a more inclusive and equitable world where every individual, regardless of their abilities, can thrive.",
             },
-        {
+            {
                 title: "Mission",
                 content: "To solve priority challenges and elevate the health and life experiences of people with disabilities, fostering an environment of growth, inclusion, and empowerment.",
             }
@@ -70,6 +70,15 @@ export const sections = [
             },
         ],
     },
+    {
+        title: "Contact Us",
+        content: [
+            {
+                title: "Contact Us",
+                content: "Reach out for support, to ask questions, or to join our cause. Together, we can make a world of difference. (Use the contact form)"
+            }
+        ]
+    }
 ];
 
 export const partners = [

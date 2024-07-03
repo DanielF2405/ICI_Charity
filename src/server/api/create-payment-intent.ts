@@ -6,10 +6,10 @@ import Stripe from 'stripe';
 // const apiKey = process.env.STRIPE_SECRET_KEY;
 const apiKey = 'api-key';
 const stripe: Stripe = new Stripe(apiKey, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2024-04-10',
 });
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export const f = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         const { amount, currency } = req.body;
 
@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             });
 
             res.status(200).json({ clientSecret: paymentIntent.client_secret });
-        } catch (error) {
+        } catch (error: any) {
             res.status(500).json({ error: error.message });
         }
     } else {

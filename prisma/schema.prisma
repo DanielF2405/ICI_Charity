@@ -2,7 +2,10 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider   = "prisma-client-js"
+    // previewFeatures = ["accelerate"]
+    // engineType = "library" // or "binary"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -12,6 +15,7 @@ datasource db {
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
     // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
+    // directUrl = env("DIRECT_DATABASE_URL")
 }
 
 // Necessary for Next auth
@@ -91,29 +95,29 @@ model Subscription {
 }
 
 model Page {
-    id              String    @id @default(cuid())
-    name            String    @unique
-    slug            String    @unique
+    id              String   @id @default(cuid())
+    name            String   @unique
+    slug            String   @unique
     title           String
     metaDescription String?
-    url             String?   @unique
+    url             String?  @unique
     createdBy       String?
     updatedBy       String?
-    status          String    @default("draft") // could be "published", "draft", "archived"
+    status          String   @default("draft") // could be "published", "draft", "archived"
     template        String?
     parentPageId    String?
-    parentPage      Page?     @relation("PageChildren", fields: [parentPageId], references: [id])
-    children        Page[]    @relation("PageChildren")
-    createdAt       DateTime  @default(now())
-    updatedAt       DateTime  @updatedAt
+    parentPage      Page?    @relation("PageChildren", fields: [parentPageId], references: [id])
+    children        Page[]   @relation("PageChildren")
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
 }
 
 model Section {
-    id        String   @id @default(cuid())
+    id        String           @id @default(cuid())
     title     String?
     // content   String   @db.Text
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt DateTime         @default(now())
+    updatedAt DateTime         @updatedAt
     elements  SectionElement[]
 }
 
@@ -124,10 +128,9 @@ model SectionElement {
     content   String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    sectionId String 
-    section   Section @relation(fields: [sectionId], references: [id])
+    sectionId String
+    section   Section  @relation(fields: [sectionId], references: [id])
 }
-
 
 model Partner {
     id        String   @id @default(cuid())

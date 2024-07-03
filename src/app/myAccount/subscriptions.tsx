@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-// import { Donation } from "@prisma/client";
+import { Subscription} from "@prisma/client";
 import { api } from "~/trpc/react";
 
 const SubscriptionsSection: React.FC<{
-    donations: Donation[];
+    // donations: Subscription[];
     selectedSubscriptionId: string | null;
     onSubscriptionClick: (id: string) => void;
-}> = ({ donations, selectedSubscriptionId, onSubscriptionClick }) => {
+}> = ({ selectedSubscriptionId, onSubscriptionClick }) => {
     // const subscriptionDonations = donations.filter(
     //     (donation) => donation.frequency !== "onetime"
     // );

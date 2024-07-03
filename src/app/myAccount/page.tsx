@@ -7,7 +7,7 @@ import "~/styles/styleguide.css";
 import { DonateHero } from "~/app/donate/hero";
 import { Hero } from "../_components/hero";
 
-export const runtime = "edge"
+// // export const runtime = "edge"
 
 const WrappedComingSoon = (): JSX.Element => {
     const title = "My Account"

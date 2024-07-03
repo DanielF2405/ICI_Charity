@@ -10,18 +10,18 @@ export function CreatePost() {
   const router = useRouter();
   const [name, setName] = useState("");
 
-  const createPost = api.post.create.useMutation({
-    onSuccess: () => {
-      router.refresh();
-      setName("");
-    },
-  });
+//   const createPost = api.post.create.useMutation({
+//     onSuccess: () => {
+//       router.refresh();
+//       setName("");
+//     },
+//   });
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        createPost.mutate({ name });
+        // createPost.mutate({ name });
       }}
       className={styles.form}
     >
@@ -35,9 +35,9 @@ export function CreatePost() {
       <button
         type="submit"
         className={styles.submitButton}
-        disabled={createPost.isPending}
+        // disabled={createPost.isPending}
       >
-        {createPost.isPending ? "Submitting..." : "Submit"}
+        {/* {createPost.isPending ? "Submitting..." : "Submit"} */}
       </button>
     </form>
   );

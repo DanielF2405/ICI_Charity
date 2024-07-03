@@ -1,5 +1,6 @@
 // src/app/api/stripe/webhook/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
+
 import Stripe from 'stripe';
 import { db } from '~/server/db'; // Adjust the import according to your setup
 import { stripe } from '~/server/stripe'
@@ -16,9 +17,14 @@ export async function POST(req: NextRequest) {
             sig,
             process.env.STRIPE_WEBHOOK_SECRET!
         );
-    } catch (err) {
-        console.error(`Webhook Error: ${err.message}`);
-        return NextResponse.json({ error: 'Webhook Error' }, { status: 400 });
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            console.error(`Webhook Error: ${err.message}`);
+            return NextResponse.json({ error: 'Webhook Error' }, { status: 400 });
+        } else {
+            console.error('Webhook Error: Unknown error');
+            return NextResponse.json({ error: 'Unknown Webhook Error' }, { status: 400 });
+        }
     }
     console.log({ event })
 
@@ -45,7 +51,7 @@ export async function POST(req: NextRequest) {
                 status,
                 message,
                 // userId,
-                user: anonymous ? undefined : { connect: { id: userId } }, // Use the relation to connect the user
+                user: anonymous ? undefined : { connect: { id: userId!, email: "" } }, // Use the relation to connect the user
                 anonymous,
             };
 
@@ -63,7 +69,7 @@ export async function POST(req: NextRequest) {
                     data: {
                         ...commonData,
                         frequency,
-                        stripeSubscriptionId: session.subscription, // Assuming you have the subscription ID from the session
+                        stripeSubscriptionId: session.subscription!.toString(), // Assuming you have the subscription ID from the session
                     },
                 });
             }

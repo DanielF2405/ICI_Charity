@@ -1,8 +1,8 @@
-import { Donation } from "@prisma/client";
+import { Subscription} from "@prisma/client";
 import React from "react";
 
 interface ManageSubscriptionMenuProps {
-    donation: Donation;
+    donation: Subscription;
     onClose: () => void;
 }
 

@@ -1,6 +1,6 @@
 import { CreatePost } from "~/app/_components/create-post";
-import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
+// import { getServerAuthSession } from "~/server/auth";
+// import { api } from "~/trpc/server";
 // import styles from "./index.module.css";
 // import "~/styles/styles.css";
 import { Home as HomePage } from "~/app/_components/home/home";
@@ -14,12 +14,12 @@ import { AboutUs } from "./_components/home/about";
 import { Partners } from "./_components/home/partners";
 import { Header } from "./_components/header";
 import { Hero as HomeHero } from "./_components/home/hero";
-import { Frame } from "./donate/page";
+// import { Frame } from "./donate/page";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import  Layout  from "./pageLayout";
 import "~/styles/styleguide.css";
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
 // const Layout = ({
 //     hero,
@@ -39,8 +39,8 @@ export const runtime = "edge"
 //     );
 // };
 export default async function Home() {
-    const hello = await api.post.hello({ text: "from tRPC" });
-    const session = await getServerAuthSession();
+    // const hello = await api.post.hello({ text: "from tRPC" });
+    // const session = await getServerAuthSession();
 
     return (
         // <CharityLandingPage />

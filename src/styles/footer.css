@@ -29,14 +29,26 @@
 }
 
 .footer-section {
-    flex: 1;
+    /* flex: 1; */
+    display: inline;
     min-width: 200px;
+    justify-content: rightr;
+}
+
+.section-full {
+    display: flex;
+}
+
+.section-half {
+    /* display: flex; */
+    margin-left: 50px;
 }
 
 .footer-section h4 {
     font-family: "Quicksand-SemiBold", Helvetica;
     font-size: 20px;
     margin-bottom: 10px;
+    margin-left: 50px;
 }
 
 .footer-section ul {
@@ -48,6 +60,11 @@
     font-family: "Quicksand-Medium", Helvetica;
     font-size: 16px;
     margin-bottom: 5px;
+}
+
+.footer-section .foundation {
+    position: relative;
+    left: 200px;
 }
 
 .footer-section.subscribe {

@@ -137,21 +137,23 @@ export const Footer: React.FC = () => {
                         </div>
                         <div className="footer-section foundation">
                             <h4>Foundation</h4>
-                            <div>
-                                <ul>
-                                    <li>Donate</li>
-                                    <li>About Us</li>
-                                    <li>Impact</li>
-                                    <li>FAQs</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul>
-                                    <li>Terms / Privacy</li>
-                                    <li>Help Center</li>
-                                    <li>Contact Us</li>
-                                    <li>Partners</li>
-                                </ul>
+                            <div className="section-full">
+                                <div className="section-half">
+                                    <ul>
+                                        <li>Donate</li>
+                                        <li>About Us</li>
+                                        <li>Impact</li>
+                                        <li>FAQs</li>
+                                    </ul>
+                                </div>
+                                <div className="section-half">
+                                    <ul>
+                                        <li>Terms / Privacy</li>
+                                        <li>Help Center</li>
+                                        <li>Contact Us</li>
+                                        <li>Partners</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

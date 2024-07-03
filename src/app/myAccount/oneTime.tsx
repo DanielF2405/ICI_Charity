@@ -3,8 +3,10 @@ import React from "react";
 import { OneTimeDonation } from "@prisma/client";
 import { api } from "~/trpc/react";
 
-const OneTimeDonationsSection: React.FC<{ donations: OneTimeDonation[] }> = ({
-    donations,
+const OneTimeDonationsSection: React.FC<{ 
+    // donations: OneTimeDonation[] 
+}> = ({
+    // donations,
 }) => {
     //   const oneTimeDonations = donations.filter(
     //     (donation) => donation.frequency === "onetime"

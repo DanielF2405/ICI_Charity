@@ -72,16 +72,16 @@ export const DonateForm: React.FC = () => {
 
         const amount = customAmount ? parseFloat(customAmount) : parseFloat(selectedAmount);
 
-        const response = await api.checkout.createCheckoutSession({
-            amount,
-            currency,
-            frequency: selectedFrequency,
-            anonymous: isAnonymous,
-        });
+        // const response = await api.checkout.createCheckoutSession({
+        //     amount,
+        //     currency,
+        //     frequency: selectedFrequency,
+        //     anonymous: isAnonymous,
+        // });
 
-        if (response.url) {
-            window.open(response.url, '_blank');
-        }
+        // if (response.url) {
+        //     window.open(response.url, '_blank');
+        // }
     };
 
     return (

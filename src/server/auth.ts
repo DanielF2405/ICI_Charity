@@ -1,8 +1,10 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import {
-  getServerSession,
+import NextAuth, {
+    // getServerSession,
   type DefaultSession,
-  type NextAuthOptions,
+} from "next-auth";
+import {
+    NextAuthConfig
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
@@ -65,8 +67,7 @@ declare module "next-auth" {
 //   ],
 // };
 
-
-export const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthConfig = {
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -83,6 +84,8 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  trustHost: process.env.NODE_ENV === 'production' ? true : undefined,
+
 };
 
 /**
@@ -91,4 +94,7 @@ export const authOptions: NextAuthOptions = {
  * @see https://next-auth.js.org/configuration/nextjs
  */
 // export const getServerAuthSession = () => getServerSession(authOptions);
-export const getServerAuthSession = () => getServerSession(authOptions);
+export const { auth, handlers, signIn, signOut } = NextAuth(authOptions)
+export const getServerAuthSession = () => auth();
+
+

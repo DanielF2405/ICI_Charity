@@ -40,15 +40,19 @@ export const DonateForm: React.FC = () => {
     const handleCustomAmountChange = (
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setSelectedAmount("");
-        setCustomAmount(e.target.value);
+        const value = e.target.value;
+        const valid = /^[0-9]+(\.[0-9]{0,2})?$/.test(value) || "";
+        if (valid) {
+            setSelectedAmount("");
+            setCustomAmount(value);
+        }
     };
 
     const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setCurrency(e.target.value);
     };
 
-    const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
     };
 
@@ -81,7 +85,7 @@ export const DonateForm: React.FC = () => {
 
     const handleCheckout = async () => {
         if (!session && !isAnonymous) {
-            signIn();
+            await signIn();
             return;
         }
 
@@ -162,13 +166,16 @@ export const DonateForm: React.FC = () => {
                         {amount}
                     </label>
                 ))}
-                <input
-                    type="number"
-                    placeholder={`Enter a custom donation amount (${getCurrencySymbol()})`}
-                    className="custom-donation-input"
-                    value={customAmount}
-                    onChange={handleCustomAmountChange}
-                />
+                <div style={{display: "flex"}}>
+                    {/* {getCurrencySymbol()} */}
+                    <input
+                        type="number"
+                        placeholder={`Enter a custom donation amount (${getCurrencySymbol()})`}
+                        className="custom-donation-input"
+                        value={customAmount}
+                        onChange={handleCustomAmountChange}
+                    />
+                </div>
             </fieldset>
             <fieldset className="donation-frequency">
                 <legend>Choose a donation frequency</legend>
@@ -215,7 +222,7 @@ export const DonateForm: React.FC = () => {
                     id="message-input"
                     placeholder="Your message..."
                     value={message}
-                    onChange={handleMessageChange}
+                    onChange={e => {handleMessageChange(e)}}
                     className="message-input"
                 ></textarea>
             </fieldset>

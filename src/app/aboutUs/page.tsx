@@ -6,7 +6,7 @@ import "~/styles/styleguide.css";
 import { AboutUs } from "./about";
 import { Hero } from "../_components/hero";
 
-export const runtime = "edge"
+// // export const runtime = "edge"
 
 const WrappedComingSoon = (): JSX.Element => {
     const title = "Icon House International"

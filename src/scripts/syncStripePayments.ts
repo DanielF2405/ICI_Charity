@@ -9,7 +9,7 @@ export const syncStripePayments = async () => {
         let startingAfter: string | undefined = undefined;
     
         while (hasMore) {
-          const paymentIntents = await stripe.paymentIntents.list({
+          const paymentIntents: any = await stripe.paymentIntents.list({
             limit: 100,
             starting_after: startingAfter,
           });

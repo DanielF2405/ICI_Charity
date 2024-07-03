@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import { api } from "~/trpc/server";
+import { api } from "~/trpc/react";
 import "~/styles/contact.css";
 import ContactForm from "./form";
 
@@ -102,10 +103,14 @@ const email = (
     </svg>
 );
 
-export async function Contact() {
-    const data = await api.content.getSection({
+export function Contact() {
+    const {data} = api.content.getSection.useQuery({
         section: "Contact Us",
     });
+
+    if (!data) {
+        return <div>Loading...</div>
+    }
 
     const title = data.elements[0]?.title;
 

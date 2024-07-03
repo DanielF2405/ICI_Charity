@@ -7,7 +7,7 @@ import "~/styles/styleguide.css";
 import { Hero } from "~/app/_components/hero";
 import { Contact } from "./contact";
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
 const WrappedComingSoon = (): JSX.Element => {
     const title = "Contact Us!"

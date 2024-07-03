@@ -46,10 +46,13 @@ if [ "$DB_PASSWORD" = "password" ]; then
   sed -i -e "s#:password@#:$DB_PASSWORD@#" .env
 fi
 
+echo "DB_PASSWORD is $DB_PASSWORD"
+DB_PASSWORD = "Daniel1212"
+echo "DB_PASSWORD is $DB_PASSWORD"
 docker run -d \
   --name $DB_CONTAINER_NAME \
   -e POSTGRES_USER="postgres" \
-  -e POSTGRES_PASSWORD="$DB_PASSWORD" \
+  -e POSTGRES_PASSWORD="$DB_PASSWOR" \
   -e POSTGRES_DB=ici_charity \
   -p "$DB_PORT":5432 \
   docker.io/postgres && echo "Database container '$DB_CONTAINER_NAME' was successfully created"

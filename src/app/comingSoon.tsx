@@ -1,12 +1,18 @@
+
 import React, { useState, useEffect } from "react";
 import "~/styles/coming.css";
 
-const RELEASE_DATE = "2024-06-31"
+const RELEASE_DATE = "2024-07-05"
 
 export const ComingSoon: React.FC = () => {
     const calculateTimeLeft = () => {
         const difference = +new Date(RELEASE_DATE) - +new Date();
-        let timeLeft = {};
+        let timeLeft = {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0
+        };
 
         if (difference > 0) {
             timeLeft = {

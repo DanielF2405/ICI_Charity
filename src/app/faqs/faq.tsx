@@ -18,7 +18,7 @@ export const FAQs: React.FC = () => {
     return (
         <div className="faq-page">
             <FAQ n={-1} />
-            <div className="ask-question">
+            {/* <div className="ask-question">
                 <h2>Have a Question?</h2>
                 <form onSubmit={handleSubmit} className="question-form">
                     <textarea
@@ -29,7 +29,7 @@ export const FAQs: React.FC = () => {
                     />
                     <button type="submit">Submit</button>
                 </form>
-            </div>
+            </div> */}
         </div>
     );
 };
