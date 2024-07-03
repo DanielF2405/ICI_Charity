@@ -7,7 +7,7 @@ import InstagramIcon from "../../assets/instagram.png";
 import LinkedInIcon from "../../assets/linkedin.png";
 import "~/styles/footer.css";
 import Link from "next/link";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/Logo.png"
 
 // export const Footer: React.FC = () => {
 //     return (

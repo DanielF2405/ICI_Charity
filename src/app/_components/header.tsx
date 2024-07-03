@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { getServerAuthSession } from "~/server/auth";
 import "~/styles/header.css";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/Logo.png"
 import { Filler } from "./Filler";
 
 export function Header({ children }: { children: React.ReactNode }) {
