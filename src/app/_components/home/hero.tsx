@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import "~/styles/hero.css"
-import header from "~/assets/Header.png";;
+import header from "../../../assets/Header.png";
 
 // export const Hero: React.FC = () => {
 
